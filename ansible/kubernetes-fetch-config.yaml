@@ -1,0 +1,12 @@
+---
+- hosts: control-plane
+  name: "Copy kubeconfig from remote"
+  tasks:
+    - name: fetching
+      become: true
+    
+      fetch:
+        src: /etc/kubernetes/admin.conf
+        dest: ../admin.conf
+        flat: yes
+      run_once: True
